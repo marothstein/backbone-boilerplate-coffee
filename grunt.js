@@ -205,9 +205,12 @@ module.exports = function(grunt) {
       stylus: {
         files: ["grunt.js", "assets/css/**/*.styl"],
         tasks: "stylus:dev"
+      }, 
+      coffee: {
+        files: ["grunt.js", "src/*"],
+        tasks: "coffee"
       }
     }
-
   });
 
   // The debug task will remove all contents inside the dist/ folder, lint
