@@ -1,8 +1,8 @@
 define([
   # Libraries.
-  "jquery",
-  "lodash",
-  "backbone",
+  "jquery"
+  "lodash"
+  "backbone"
 
   # Plugins.
   "plugins/backbone.layoutmanager"
@@ -19,13 +19,12 @@ define([
   JST = window.JST = window.JST || {}
 
   # Configure LayoutManager with Backbone Boilerplate defaults.
-  Backbone.LayoutManager.configure({
+  Backbone.LayoutManager.configure(
     # Allow LayoutManager to augment Backbone.View.prototype.
     manage: true
-    paths: {
+    paths: 
       layout: "app/templates/layouts/"
       template: "app/templates/"
-    }
     
     fetch: (path) ->
       # Put fetch into `async-mode`.
@@ -40,7 +39,7 @@ define([
 
       # Otherwise seek out the template asynchronously.
       $.ajax({ url: app.root + path }).then( (contents) ->
-        done(JST[path] = _.template(contents));
+        done(JST[path] = _.template(contents))
       )
   )
 
@@ -53,7 +52,7 @@ define([
     # Helper for using layouts.
     useLayout: (name) ->
       # If already using this Layout, then don't re-inject into the DOM.
-      if @layout && @layout.options.template === name 
+      if @layout && @layout.options.template == name 
         return @layout
 
       # If a layout already exists, remove it from the DOM.
@@ -61,7 +60,7 @@ define([
         @layout.remove()
 
       # Create a new Layout.
-      layout = new Backbone.Layout({
+      layout = new Backbone.Layout(
         template: name
         className: "layout " + name
         id: "layout"
@@ -78,5 +77,6 @@ define([
 
       # Return the reference, for chainability.
       return layout
-  }, Backbone.Events)
+    }, Backbone.Events
+  )
 )
